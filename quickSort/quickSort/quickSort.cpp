@@ -1,4 +1,4 @@
-// quickSort.cpp : �������̨Ӧ�ó������ڵ㡣
+// quickSort.cpp : 定义控制台应用程序的入口点。
 //
 
 #include "stdafx.h"
@@ -16,6 +16,7 @@
 
 using namespace std;
 
+//快速排序模板类
 template<typename Type>
 class quickSort
 {
@@ -26,11 +27,11 @@ public:
 
 	template<typename Compare> void sort(int low, int high, Compare comp);
 
-	void printArray();
+	void printArray();//查看vector元素
 private:
 	vector<Type> m_array;
 
-	template<typename Compare> int partion(int low, int high, Compare comp);
+	template<typename Compare> int partion(int low, int high, Compare comp);//vector数组的分割函数
 };
 
 template<typename Type>
@@ -38,7 +39,7 @@ template<typename Compare>
 void quickSort<Type>::sort(int low, int high, Compare comp){
 	int q;
 	if(high > low){
-		q = partion(low, high, comp);
+		q = partion(low, high, comp);//以q为中心点分割
 		sort(low, q - 1, comp);
 		sort(q + 1, high, comp);
 	}
@@ -56,7 +57,7 @@ template<typename Type>
 template<typename Compare>
 int quickSort<Type>::partion(int low, int high, Compare comp){
 	Type x = m_array[high];
-	int i = low - 1;
+	int i = low - 1;//从最后一个元素开始，i保存比其小的元素在数组中位置，j从最后往前遍历
 	for(int j = low; j < high; j++){
 		if(comp(m_array[j], x)){
 			i++;
