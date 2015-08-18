@@ -1,4 +1,4 @@
-// heapSort.cpp : �������̨Ӧ�ó������ڵ㡣
+// heapSort.cpp : 定义控制台应用程序的入口点。
 //
 
 #include "stdafx.h"
@@ -26,15 +26,15 @@ class Heap
 
 		void printArray();
 	private:
-		int heapSize;
+		int heapSize;//排序数组的长度
 
-		vector<Type> m_array;
+		vector<Type> m_array;//存储排序数组的vector容器
 
 		template<typename Compare> 
-			void createHeap(Compare comp);
+			void createHeap(Compare comp);//建立堆
 		
 		template<typename Compare> 
-			void maxHeap(Compare comp, int i, int Hsize);
+			void maxHeap(Compare comp, int i, int Hsize);//最大堆或最小堆的构造函数
 };
 
 template<typename Type>
@@ -106,7 +106,7 @@ int _tmain()
 	for(int i = 0; i < 10; i++)
 	  array.push_back(i);
 	random_shuffle(array.begin(), array.end());
-	Heap<int> heap(array);
+	Heap<int> heap(array);//排序数组vector
 	heap.printArray();
 	heap.sort(less<int>());
 	heap.printArray();
@@ -118,7 +118,7 @@ int _tmain()
 		array2.push_back(i + 65);
 	}
 	random_shuffle(array2.begin(), array2.end());
-	Heap<char> heap2(array2);
+	Heap<char> heap2(array2);//排序字符vector
 	heap2.printArray();
 	heap2.sort(less<char>());
 	heap2.printArray();
